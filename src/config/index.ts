@@ -1,6 +1,6 @@
-// import dotenv from 'dotenv';
+ import dotenv from 'dotenv';
 
-// dotenv.config();
+dotenv.config();
 
 // export const config = {
 //     port : process.env.PORT,
@@ -15,8 +15,6 @@
 // };
 
 // src/config/index.ts
-
-import 'dotenv/config';
 
 export const config = {
     db: {

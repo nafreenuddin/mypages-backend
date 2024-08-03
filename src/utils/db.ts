@@ -13,10 +13,11 @@
 // });
 
 // src/utils/db.ts
-import { createPool, Pool } from 'mysql2/promise';
+// import { createPool, Pool } from 'mysql2/promise';
+import mysql from 'mysql2/promise';
 import { config } from '../config';
 
-export const pool = createPool({
+export const pool = mysql.createPool({
   host: config.db.host,
   user: config.db.user,
   password: config.db.password,
@@ -26,3 +27,9 @@ export const pool = createPool({
     rejectUnauthorized: false
   } : undefined
 });
+
+export const query = async (sql: string, params: any[] = []) => {
+  console.log("Pool", pool);
+  const [results] = await pool.query(sql, params);
+  return results;
+};
