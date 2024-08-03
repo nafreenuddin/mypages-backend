@@ -1,6 +1,7 @@
 // src/controllers/register.ts
 import { Request, Response, NextFunction } from "express";
-import { registerUser } from "../utils/dbHelper";
+// import { registerUser } from "../utils/dbHelper";
+import { registerUser } from "../helpers/registerHelpers";
 
 export const register = async (
   req: Request,
