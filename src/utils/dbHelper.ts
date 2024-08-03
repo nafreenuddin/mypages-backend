@@ -1,10 +1,14 @@
 // src/utils/dbHelpers.ts
-import { Pool } from "mysql2/promise";
+// import { Pool } from "mysql2/promise";
 import { User, QueryResult } from "../types";
 
-const pool: Pool = require("../config/index").pool;
+// const pool: Pool = require("../config/index").pool;
+import { pool } from "../utils/db";
+
+console.log('Pool:', pool);
 
 export const registerUser = async (user: User): Promise<QueryResult> => {
+  console.log('User:', user);
   const { username, email, mobile, password } = user;
   const [result] = await pool.query(
     "INSERT INTO userpage (username, email, mobile, password) VALUES (?, ?, ?, ?)",
