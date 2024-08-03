@@ -36,10 +36,19 @@ export const registerUser = async (user: User): Promise<QueryResult> => {
 // };
 
 // getUserByUsername function
-export const getUserByUsername = async (username: string) => {
-  const result = await query("SELECT * FROM userpage WHERE username = ?", [
-    username,
-  ]);
+// export const getUserByUsername = async (username: string) => {
+//   const result = await query("SELECT * FROM userpage WHERE username = ?", [
+//     username,
+//   ]);
+//   return result;
+// };
+export const getUserByUsername = async (username: string): Promise<User[]> => {
+  console.log('Fetching user by username:', username); // Add logging for debugging
+  const result = await query<User[]>(
+    "SELECT * FROM userpage WHERE username = ?",
+    [username]
+  );
+  console.log('User fetched:', result); // Add logging for debugging
   return result;
 };
 
