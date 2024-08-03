@@ -10,6 +10,7 @@ export interface User {
   export interface QueryResult {
     insertId: number;
     affectedRows: number;
+
     // Add other properties if needed
   }
   

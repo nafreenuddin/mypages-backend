@@ -14,7 +14,7 @@
 
 // src/utils/db.ts
 // import { createPool, Pool } from 'mysql2/promise';
-import mysql from 'mysql2/promise';
+import mysql,{ RowDataPacket } from 'mysql2/promise';
 import { config } from '../config';
 
 export const pool = mysql.createPool({
@@ -28,8 +28,14 @@ export const pool = mysql.createPool({
   } : undefined
 });
 
-export const query = async (sql: string, params: any[] = []) => {
-  console.log("Pool", pool);
-  const [results] = await pool.query(sql, params);
+// export const query = async (sql: string, params: any[] = []) => {
+//   console.log("Pool", pool);
+//   const [results] = await pool.query(sql, params);
+//   return results;
+// };
+
+export const query = async <T = any>(sql: string, params: any[] = []): Promise<T> => {
+  console.log('Executing query:', sql, params);
+  const [results] = await pool.query<T & RowDataPacket[]>(sql, params);
   return results;
 };
