@@ -17,7 +17,8 @@
 // };
 // src/controllers/user.ts
 import { Request, Response, NextFunction } from 'express';
-import { getUserByUsername } from '../utils/dbHelper';
+// import { getUserByUsername } from '../utils/dbHelper';
+import { getUserByUsername } from '../helpers/userHelpers';
 import { User } from '../types';
 
 export const getUser = async (req: Request, res: Response, next: NextFunction) => {
