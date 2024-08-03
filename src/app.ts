@@ -26,6 +26,7 @@ import { notFound } from './controllers/notfound';
 import { errorHandler } from './middlewares/errorHandler';
 import {  FieldPacket } from 'mysql2';  // Import the FieldPacket type from 'mysql2'
 import { pool } from './utils/db';
+import { Console } from 'console';
 
 dotenv.config();
 
@@ -33,12 +34,15 @@ const app = express();
 
 app.use(express.json());
 
+console.log("Starting the Application");
+console.log("Start")
 // Function to test database connectivity
 async function testDB() {
   try {
     // Correctly type the response from the query
     const [rows]: [any[], FieldPacket[]] = await pool.query('SELECT 1 + 1 AS solution');
     console.log('DB connection test successful. Solution:', rows[0].solution); // Should log "2"
+    console.log("connction successfull");
   } catch (error) {
     console.error('DB connection test failed:', error);
   }
